@@ -1,3 +1,31 @@
+#game-info-display, #instructions, #turn-display {
+    height: 40px;
+    width: px;
+    padding: 5px;
+    background-color: beige;
+    display: flex;
+    align-items: center;
+}
+
+#all-game-boards {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0px 20px 0px;
+
+}
+#player-board {
+    height: 400px;
+    width: 400px;
+    background-color: beige;
+}
+
+#computer-board {
+    height: 400px;
+    width: 400px;
+    background-color: beige;
+}
 body {
     background-color: aqua;
+    width: 900px;
+    border: solid black 5px
 };
