@@ -22,23 +22,27 @@ let computerSunkShips = []; // this variable will contain all ships the computer
 
 /*-------------------------------- Functions --------------------------------*/
 
-function init () {
+function init() {
 
 };
 
-function startGame () {
+function startGame() {
     // when start button is clicked, places 5 ships randomly on both boards
 };
 
-function createShips() {
-// function to place in start game to create ships to place on board.
+function buildGameboards() {
+    // this function will build the squares in the game board.
 }
 
-function placeShips () {
+function createShips() {
+    // function to place in start game to create ships to place on board.
+}
+
+function placeShips() {
     // function to place in start ships that places ships on the board
 };
 
-function handleClick () {
+function handleClick() {
     // function that handles a click on the games board
     // checks current space, 
     // if occupied, marks a hit, 
@@ -49,28 +53,28 @@ function handleClick () {
     // update display
 };
 
-function checkGameStatus () {
-// function to be placed in handleClick that checks if win condition is met.
+function checkGameStatus() {
+    // function to be placed in handleClick that checks if win condition is met.
 };
 
-function computerTurn () {
-// this function will allow the 'Computer' player to attack our board at random. 
+function computerTurn() {
+    // this function will allow the 'Computer' player to attack our board at random. 
 };
 
-function render () {
-// function to update display based on game state
+function render() {
+    // function to update display based on game state
 };
 
-function updateDisplay () {
-// function to update display based on game state.
+function updateDisplay() {
+    // function to update display based on game state.
 };
 
-function updateBoard () {
-// function to update the boards based on game state
+function updateBoard() {
+    // function to update the boards based on game state
 };
 
-function resetGame () {
-// function to reset the game when reset button is pressed.
+function resetGame() {
+    // function to reset the game when reset button is pressed.
 };
 
 

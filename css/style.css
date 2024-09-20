@@ -1,4 +1,6 @@
-#game-info-display, #instructions, #turn-display {
+#game-info-display,
+#instructions,
+#turn-display {
     height: 40px;
     width: px;
     padding: 5px;
@@ -13,19 +15,35 @@
     margin: 20px 0px 20px 0px;
 
 }
+
 #player-board {
     height: 400px;
     width: 400px;
+    margin: 25px;
     background-color: beige;
 }
 
 #computer-board {
     height: 400px;
     width: 400px;
+    margin: 25px;
     background-color: beige;
 }
+
+#buttons {
+    display: flex;
+    justify-content: center;
+}
+
+#start-button,
+#reset-button {
+    margin: 25px;
+}
+
 body {
     background-color: aqua;
     width: 900px;
     border: solid black 5px
-};
+}
+
+;
