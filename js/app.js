@@ -21,7 +21,7 @@ As a user, I want a way to reset the game so my opponent and I can rematch.
 /*
 1. Start code has the basic outline of 100px X 100px board. There is also an instruction dive, game info display, and turn display. 
 
-2. Clicking on the "Start" button should create 10 square by 10 square grid on each gameboard AND place 5 ship objects of varying length on the board at random. This is a 2 player game, so the location of the ships should not be visible to the player. 
+2. Clicking on the "Start" button should create 10 square by 10 square grid on each gameboard AND place 5 ship objects of varying length on the board. Initially these will be harded coded locations. This is a 2 player game, so the location of the ships should not be visible to the player. 
         There are 5 ships: 
         Carrier: 5 squares long
         Battleship: 4 squares long
@@ -29,11 +29,13 @@ As a user, I want a way to reset the game so my opponent and I can rematch.
         Cruiser: 3 squares long
         Dingy: 2 squares long
 
+        When placed, each of these ships will place a string associated with that that ship in the playerOne(orTwo)Board arrays below the indexs below that correspond to the same id as square in the HTML. 
+
         A key challenge with this will be ensuring that ships are being placed in "valid" locations. Meaning two ships can't occupy the same space AND all squares represent that "ship" must be in a straight line (vertically or horizonally) on the same row or column. 
 
 3. On the players turn, they can click on a square on the opposing players board. On click, the game board will update by highlighting the square red (for a hit on a ship), or white (for a miss). The display will also reflect the game status.
 
-4. Each hit will store the class name of the ship (ie carrier, battleship, submarine etc) in an array of player hits as strings. 
+4. Each hit will store the string name of the ship (ie carrier, battleship, submarine etc) in an array of player hits as strings. 
 
 5. When the same string appears in the array the same amount of times === length of that boat, that boats is "sunk" and the name of that boat is added to the SunkShips array and the game display will update based on game status.  
 
@@ -49,19 +51,36 @@ As a user, I want a way to reset the game so my opponent and I can rematch.
 
 2. Adding a display that shows the player which ships they have sunk of the opposing player. 
 
-3. Allow players to pick their ship locations. 
+3. Each reset of the game place the ships in a new position. 
 
-4. Adding animation feedback for hits, misses, and sinks. 
+4. Allow players to pick their ship locations. 
+
+5. Adding animation feedback for hits, misses, and sinks.
+
+6. Add computer player functionality. 
 */
 /*-------------------------------- Constants --------------------------------*/
+const playerOneBoard = [
+    '', '', '', 'submarine', 'submarine', 'submarine', '', '', '', ''
 
+]; // Both this and the player two board below will ultimaly be an array of 100 items.
 
+const playerTwoBoard = [
+    '', '', '', 'submarine', 'submarine', 'submarine', '', '', '', ''
+];
 
+const boats = { // This object hold the sink conditions for the various ships to be compared against in the handle click functions. 
+    submarine: 3,
+    carrier: 5,
+    battleship: 4,
+    crusier: 3,
+    dingy: 2,
+};
 /*---------------------------- Variables (state) ----------------------------*/
 
 let playerTurn; // this variable keeps track of player turn
-let gameOver = false // this variable keeps track of if win condition is met
-let playerOneHits = []; // this variable will hold the player hits based on game status
+let gameOver = false; // this variable keeps track of if win condition is met
+let playerOneHits = ['submarine', ]; // this variable will hold the player hits based on game status
 let playerTwoHits = []; // this variable will old the computer hits based on game status
 let playerOneSunkShips = []; // this variable will contain all ships the player has sunk. 
 let playerTwoSunkShips = []; // this variable will contain all ships the computer has sunk. 
@@ -83,23 +102,31 @@ function startGame() {
     // when start button is clicked, places 5 ships randomly on both boards
 };
 
-function buildGameboards() {
-    // this function will build the squares in the game board.
-}
-
 function createShips() {
     // function to place in start game to create ships to place on board.
 }
 
 function placeShips() {
-    // function to place in start ships that places ships on the board
+    //function to place in start ships that places ships on the board
 };
 
 function handleClick() {
     // function that handles a click on the games board
-    // checks current space, 
-    // if occupied, marks a hit, 
-    // if hit checks if game ends
+    // checks id of clicked element
+    // assign id to clickedElementId (which will be a number) 
+    // check playerOneBoardArray at the index === clickedElementId
+    // if playerOneBoard[clickedElementID] has a class of .hit || .empty, return.
+    // else if playerOneBoard[clickedElementID] !== empty string, then
+    // add the returned string to playerOneHits array.  
+    // check the number of times playerOneBoard[clickledElementID] occurs in playerOneHits array (with .reduce()).
+    
+    // if boats[playerOneBoard[clickedElementID]] === result of tally from playerOneHits.reduce, then: 
+    // sinkShip(); in sinkShip() checkGameStatus();
+
+
+    // if playOneBoardArray[clickedElementID] is true, give the clicked element a class of '.hit', which would syle the clicked element red. 
+    // else give the clicked element a class of .empty, which would style it white. 
+
     // if win condition is met, end game.
     // if !gameOver and hit; switch turn
     // else mark empty and switch turn

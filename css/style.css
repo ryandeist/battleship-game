@@ -16,14 +16,16 @@
 
 }
 
-#player-board {
+#player-one-board {
     height: 400px;
     width: 400px;
     margin: 25px;
     background-color: beige;
+    display: flex; 
+
 }
 
-#computer-board {
+#player-two-board {
     height: 400px;
     width: 400px;
     margin: 25px;
@@ -46,4 +48,7 @@ body {
     border: solid black 5px
 }
 
+#board-square {
+    border: 1px;
+}
 ;
