@@ -41,7 +41,7 @@ As a user, I want a way to reset the game so my opponent and I can rematch.
 
 6. When the SunkShips array length === 5 (the total number of ships) that will trigger the win condition for the player and the game is over. 
 
-7. A reset button is available to restart the game if the play wants to play again.
+7. A reset button is available to restart the game if the player wants to play again.
 */
 
 /*-------------------------------- Stretch Goals --------------------------------*/
@@ -60,16 +60,7 @@ As a user, I want a way to reset the game so my opponent and I can rematch.
 6. Add computer player functionality. 
 */
 /*-------------------------------- Constants --------------------------------*/
-const playerOneBoard = [
-    '', '', '', 'submarine', 'submarine', 'submarine', '', '', '', ''
-
-]; // Both this and the player two board below will ultimaly be an array of 100 items.
-
-const playerTwoBoard = [
-    '', '', '', 'submarine', 'submarine', 'submarine', '', '', '', ''
-];
-
-const boats = { // This object hold the sink conditions for the various ships to be compared against in the handle click functions. 
+const sinkConditions = { // This object hold the sink conditions for the various ships to be compared against in the handle click functions. 
     submarine: 3,
     carrier: 5,
     battleship: 4,
@@ -78,19 +69,34 @@ const boats = { // This object hold the sink conditions for the various ships to
 };
 /*---------------------------- Variables (state) ----------------------------*/
 
+let activeGame = false;
+
 let playerTurn; // this variable keeps track of player turn
+
 let gameOver = false; // this variable keeps track of if win condition is met
-let playerOneHits = ['submarine', ]; // this variable will hold the player hits based on game status
+
+let playerOneHits = []; // this variable will hold the player hits based on game status
 let playerTwoHits = []; // this variable will old the computer hits based on game status
+
 let playerOneSunkShips = []; // this variable will contain all ships the player has sunk. 
 let playerTwoSunkShips = []; // this variable will contain all ships the computer has sunk. 
-
 // if either playerOneSunkShips or playerTwoSunkShips reaches the length of the total amount of ships, the game is over.
-
+let playerOneBoard = [];
+let playerTwoBoard = [];
 
 /*------------------------ Cached Element References ------------------------*/
 
-// CERs for start button, reset button and the two boards. 
+const turnDisplayEl = document.querySelector('#turn-display');
+// console.dir(turnDisplayEl); checks to make sure turnDisplayEl is active.
+const gameInfoDisplayEl = document.querySelector('#game-info-display');
+// console.dir(gameInfoDisplayEl);
+const playerOneBoardEl = document.querySelector('#player-one-board');
+
+const playerTwoBoardEl = document.querySelector('#player-two-board');
+
+const startButtonEl = document.querySelector('#start-button');
+
+const resetButtonEl = document.querySelector('#reset-button');
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -98,28 +104,100 @@ function init() {
 
 };
 
-function startGame() {
-    // when start button is clicked, places 5 ships randomly on both boards
+function startGame() { // when start button is clicked, places 5 ships randomly on both boards
+    console.log('Start Game is initiated');
+    activeGame = true;
+    playerTurn = "Player One";
+    gameOver = false;
+    createBoardOne();
+    createBoardTwo();
+    disableStartButton();
 };
 
-function createShips() {
-    // function to place in start game to create ships to place on board.
+function createBoardOne() { // function to place in start game to create the board grid. 
+    playerOneBoard = [ //array representing the player one board; 
+        '', '', 'carrier', 'carrier', 'carrier', 'carrier', 'carrier', '', '', '',
+        '', '', '', '', '', '', '', '', '', '',
+        '', '', '', '', '', '', '', '', '', '',
+        '', '', '', '', '', '', '', '', '', '',
+        '', '', '', '', '', '', '', '', '', '',
+        '', '', '', '', '', '', '', '', '', '',
+        '', '', '', '', '', '', '', '', '', '',
+        '', '', '', '', '', '', '', '', '', '',
+        '', '', '', '', '', '', '', '', '', '',
+        '', '', '', '', '', '', '', '', '', ''
+    ];
+
+    for (let i = 0; i < 100; i++) {
+        const boardSquare = document.createElement('div');
+        boardSquare.classList.add('board-square');
+        boardSquare.id = i;
+        playerOneBoardEl.append(boardSquare);
+    }
+
+    playerOneBoard.forEach((square, index) => {
+        let currentSquare
+        if (playerOneBoard[index] !== '') {
+            currentSquare = document.getElementById('player-one-board').getElementsByClassName('board-square')[index];
+            currentSquare.style.backgroundColor = 'blue';
+        }
+    })
 }
+
+function createBoardTwo() { // function to place in start game to create the board grid. 
+    playerTwoBoard = [ //array representing the player one board; 
+        '', '', 'carrier', 'carrier', 'carrier', 'carrier', 'carrier', '', '', '',
+        '', '', '', '', '', '', '', '', '', '',
+        '', '', '', '', '', '', '', '', '', '',
+        '', '', '', '', '', '', '', '', '', '',
+        '', '', '', '', '', '', '', '', '', '',
+        '', '', '', '', '', '', '', '', '', '',
+        '', '', '', '', '', '', '', '', '', '',
+        '', '', '', '', '', '', '', '', '', '',
+        '', '', '', '', '', '', '', '', '', '',
+        '', '', '', '', '', '', '', '', '', ''
+    ];
+
+    for (let i = 0; i < 100; i++) {
+        const boardSquare = document.createElement('div');
+        boardSquare.classList.add('board-square');
+        boardSquare.id = i;
+        playerTwoBoardEl.append(boardSquare);
+    }
+
+    playerOneBoard.forEach((square, index) => {
+        let currentSquare
+        if (playerOneBoard[index] !== '') {
+            currentSquare = document.getElementById('player-two-board').getElementsByClassName('board-square')[index];
+            currentSquare.style.backgroundColor = 'blue';
+        }
+    })
+}
+
+function disableStartButton() {
+    if (activeGame === true) {
+        startButtonEl.disabled = true;
+    };
+};
 
 function placeShips() {
     //function to place in start ships that places ships on the board
 };
 
-function handleClick() {
-    // function that handles a click on the games board
-    // checks id of clicked element
-    // assign id to clickedElementId (which will be a number) 
+function handlePlayerTwoTurn(event) {     // function that handles a click on the games board
+    const clickedElementId = event.target.id;     // checks id of clicked element and assigns it to clickedElementId (which is a number);
+    if (event.target.classList.contains('hit') || event.target.classList.contains('empty')) {
+        return;
+    } else if (playerOneBoard[clickedElementId] !== '') {
+        playerTwoHits.push(playerOneBoard[clickedElementId]);
+        console.log(playerTwoHits);
+    }
     // check playerOneBoardArray at the index === clickedElementId
     // if playerOneBoard[clickedElementID] has a class of .hit || .empty, return.
     // else if playerOneBoard[clickedElementID] !== empty string, then
     // add the returned string to playerOneHits array.  
     // check the number of times playerOneBoard[clickledElementID] occurs in playerOneHits array (with .reduce()).
-    
+
     // if boats[playerOneBoard[clickedElementID]] === result of tally from playerOneHits.reduce, then: 
     // sinkShip(); in sinkShip() checkGameStatus();
 
@@ -150,16 +228,20 @@ function updateBoard() {
 };
 
 function resetGame() {
+    console.log('The game has been reset');
     // function to reset the game when reset button is pressed.
 };
 
-
+init();
 /*----------------------------- Event Listeners -----------------------------*/
 
+playerOneBoardEl.addEventListener('mousedown', handlePlayerTwoTurn);
+
+// playerTwoBoardEl.addEventListener('mousedown', handlePlayerOneTurn);
 // event listener needed for each board and its elements.
-
-// event listener needed for start game button
-
+startButtonEl.addEventListener('click', startGame);
+// event listener for start game button
+resetButtonEl.addEventListener('click', resetGame);
 // even listener needed for reset button
 
 

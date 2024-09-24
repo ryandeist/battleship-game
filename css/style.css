@@ -20,8 +20,10 @@
     height: 400px;
     width: 400px;
     margin: 25px;
-    background-color: beige;
+    background-color: lightpink;
     display: flex; 
+    flex-wrap: wrap;
+
 
 }
 
@@ -29,7 +31,9 @@
     height: 400px;
     width: 400px;
     margin: 25px;
-    background-color: beige;
+    background-color: lightpink;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 #buttons {
@@ -43,12 +47,14 @@
 }
 
 body {
-    background-color: aqua;
+    background-color: beige;
     width: 900px;
     border: solid black 5px
 }
 
-#board-square {
-    border: 1px;
-}
-;
+.board-square {
+   width: 40px;
+   height: 40px;
+   border: solid 1px; 
+   box-sizing: border-box;
+};
