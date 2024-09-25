@@ -10,15 +10,44 @@
 </head>
 
 <body>
-    <div id="instructions">Instructions:</div>
+    <h1 class="title">Battleship</h1>
+    <h2 id="instructions">Instructions:</h2>
+    <p>
+    <ol id="instruction-list">
+        <li>This is a two player game. Each player is represented by a game board below.</li>
+        <li>Each board has 5 hidden ships stationed either horizontally or vertically on 10x10 grid.</li>
+        <li>The ships include:
+            <ul>
+                <li>Carrier - 5 blocks long</li>
+                <li>Battleship - 4 blocks long</li>
+                <li>Submarine - 3 blocks long</li>
+                <li>Cruiser - 3 blocks long</li>
+                <li>Dingy - 2 blocks long</li>
+            </ul>
+        </li>
+        <li>On their turn, the player will attempt to 'hit' their opponents ship by clicking on a square in their
+            oppenents board.</li>
+        <li>A successful 'hit' will be signified by the targeted square turning red and a message in the Game Info
+            display. </li>
+        <li>A miss will be signified by the targeted square turning white and a message in the Game Info Display.</li>
+        <li>To 'sink' a ship, the player must 'hit' all blocks that ship occupys.</li>
+        <li>The first player to 'sink' all of their oppenents ships wins!</li>
+    </ol>
+    </p>
     <div id="display">
-        <p>Current Turn:<span id="turn-display">Waiting for game to start...</span></p>
-        <p>Game Info:<span id="game-info-display">Click "Start" to begin. </span></p>
+        <h2 class="title">Current Turn:</h2>
+        <p id="turn-display">Waiting for game to start...</p>
+        <h2 class="title">Game Info:</h2>
+        <p id="game-info-display">Click "Start" to begin. </p>
     </div>
     <div id="all-game-boards">
-        <div id="player-one-board">
+        <div id="entire-p1-board">
+            <div class="label">Player One</div>
+            <div id="player-one-board"></div>
         </div>
-        <div id="player-two-board">
+        <div id="entire-p2-board">
+            <div class="label">Player Two</div>
+            <div id="player-two-board"></div>
         </div>
     </div>
     <div id="buttons">

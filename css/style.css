@@ -1,40 +1,68 @@
-#game-info-display,
-#instructions,
-#turn-display {
-    height: 40px;
-    width: px;
-    padding: 5px;
-    background-color: beige;
-    display: flex;
-    align-items: center;
+body {
+    background-color: lightblue;
+    width: 900px;
+    border: solid black 5px;
 }
 
+#game-info-display,
+#instructions,
+#turn-display,
+.title {
+    margin: 0px;
+    height: 40px;
+    width: px;
+    padding: 0px;
+    background-color: royalblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#instruction-list {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+}
 #all-game-boards {
     display: flex;
     justify-content: space-between;
     margin: 20px 0px 20px 0px;
-
 }
 
-#player-one-board {
-    height: 400px;
-    width: 400px;
-    margin: 25px;
-    background-color: lightpink;
-    display: flex; 
-    flex-wrap: wrap;
-
-
-}
-
+#player-one-board,
 #player-two-board {
     height: 400px;
     width: 400px;
-    margin: 25px;
-    background-color: lightpink;
-    display: flex;
+    margin: 15px 25px 15px 25px;
+    background-image: url(/assets/nature-sea-surface-aerial-viewbird-eye-view-photo-turquoise-waves-water-surface-textureblue-sea-background-beautiful-nature-amazing-view-sea-background_34362-4563.avif);
+    background-color: lightcyan;
+    display: flex; 
     flex-wrap: wrap;
+    outline: solid royalblue 12px;
 }
+
+#entire-p1-board,
+#entire-p2-board {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.label {
+    border-radius: 15px;
+    background-color: royalblue;
+    padding: 10px 20px;
+    font-weight: 600;
+}
+.hit {
+    background-color: red !important;
+}
+
+.empty {
+    background-color: white !important; 
+} 
 
 #buttons {
     display: flex;
@@ -43,13 +71,7 @@
 
 #start-button,
 #reset-button {
-    margin: 25px;
-}
-
-body {
-    background-color: beige;
-    width: 900px;
-    border: solid black 5px
+    margin: 0px 25px 25px 25px;
 }
 
 .board-square {
@@ -57,4 +79,5 @@ body {
    height: 40px;
    border: solid 1px; 
    box-sizing: border-box;
-};
+}
+

@@ -100,8 +100,6 @@ const startButtonEl = document.querySelector('#start-button');
 
 const resetButtonEl = document.querySelector('#reset-button');
 
-
-
 /*-------------------------------- Functions --------------------------------*/
 
 function startGame() { // when start button is clicked, places 5 ships randomly on both boards
@@ -138,13 +136,13 @@ function createBoardOne() { // function to place in start game to create game bo
         playerOneBoardEl.append(boardSquare);
     };
 
-    playerOneBoard.forEach((square, index) => { // temp styling of ships
-        let currentSquare;
-        if (playerOneBoard[index] !== '') {
-            currentSquare = document.getElementById('player-one-board').getElementsByClassName('board-square')[index];
-            currentSquare.style.backgroundColor = 'blue';
-        };
-    });
+    // playerOneBoard.forEach((square, index) => { // temp styling of ships
+    //     let currentSquare;
+    //     if (playerOneBoard[index] !== '') {
+    //         currentSquare = document.getElementById('player-one-board').getElementsByClassName('board-square')[index];
+    //         currentSquare.style.backgroundColor = 'blue';
+    //     };
+    // });
 };
 
 function createBoardTwo() { // function to place in start game to create game board for P2
@@ -169,13 +167,13 @@ function createBoardTwo() { // function to place in start game to create game bo
         playerTwoBoardEl.append(boardSquare);
     };
 
-    playerTwoBoard.forEach((square, index) => { // temp styling of ships
-        let currentSquare;
-        if (playerTwoBoard[index] !== '') {
-            currentSquare = document.getElementById('player-two-board').getElementsByClassName('board-square')[index];
-            currentSquare.style.backgroundColor = 'blue';
-        };
-    });
+    // playerTwoBoard.forEach((square, index) => { // temp styling of ships
+    //     let currentSquare;
+    //     if (playerTwoBoard[index] !== '') {
+    //         currentSquare = document.getElementById('player-two-board').getElementsByClassName('board-square')[index];
+    //         currentSquare.style.backgroundColor = 'blue';
+    //     };
+    // });
 };
 
 function disableStartButton() { // function to disable start button. Should run when there is an active game. 
@@ -195,14 +193,14 @@ function handlePlayerOneTurn(event) {     // function that handles a click for P
         playerOneHits.push(hitSquare);  // if playerTwoBoard[clickedElementID] !== empty string, then push the contained string to playerOneHits;
         event.target.classList.add('hit');  // add the .hit class to the selected element for styling. 
         console.log(`Player One Hits: ${playerOneHits}`)
-        gameInfoDisplayEl.textContent = `Player 1 Hit Player 2's ${hitSquare[0].toUpperCase() + hitSquare.substring(1)}!`;
+        gameInfoDisplayEl.textContent = `Player 1 hit one of Player 2's ships!`;
         checkP1SunkShips(event); // check to see if ship sinks and game ends;
         playerTurn = 'Player Two';
     } else {
         event.target.classList.add('empty'); // if the space contains an empty string and has no been clicked before, apply .empty class for styling. 
         playerTurn = 'Player Two';
-        gameInfoDisplayEl.textContent = 'Player 1 Missed Their Shot!';
-        console.log('Player One Missed!')
+        gameInfoDisplayEl.textContent = 'Player 1 missed their shot!';
+        console.log('Player 1 missed!')
     };
     updateTurnMessage()
     disableOppositePlayerBoard();
@@ -217,14 +215,14 @@ function handlePlayerTwoTurn(event) {     // function that handles a click for P
         playerTwoHits.push(hitSquare);  // if playerOneBoard[clickedElementID] !== empty string, then push the contained string to playerTwoHits;
         event.target.classList.add('hit');     // add the .hit class to the selected element for styling.
         console.log(`Player Two Hits: ${playerTwoHits}`);
-        gameInfoDisplayEl.textContent = `Player 2 Hit Player 1's ${hitSquare[0].toUpperCase() + hitSquare.substring(1)}!`;
+        gameInfoDisplayEl.textContent = `Player 2 hit one of Player 1's ships!`;
         checkP2SunkShips(event); // check to see if ship sinks and game ends.
         playerTurn = 'Player One';
     } else {
         event.target.classList.add('empty');  // if the space contains an empty string and has no been clicked before, apply .empty class for styling. 
         playerTurn = 'Player One';
-        gameInfoDisplayEl.textContent = 'Player 2 Missed Their Shot!';
-        console.log('Player Two Missed!')
+        gameInfoDisplayEl.textContent = 'Player 2 missed their shot!';
+        console.log('Player 2 missed!')
     };
     updateTurnMessage();
     disableOppositePlayerBoard();
@@ -236,7 +234,7 @@ function checkP1SunkShips(event) { //function that checks if a ships sink condit
     const hitShipArr = playerOneHits.filter((ship) => ship === hitShip); // check to see if the hit ship meets the sink ship reuirement. 
     if (hitShipArr.length === sinkConditions[hitShip]) {
         playerOneSunkShips.push(hitShip); // if the ship is sunk, add to P1 sunk ships array
-        gameInfoDisplayEl.textContent = `Player 1 Hit and Sunk Player 2's ${hitShip[0].toUpperCase() + hitShip.substring(1)}!`;
+        gameInfoDisplayEl.textContent = `Player 1 hit and SUNK Player 2's ${hitShip[0].toUpperCase() + hitShip.substring(1)}!`;
         checkGameStatus(); // check to see if the most recent sink ends the game.
         console.log(`Player One Sunk Ships: ${playerOneSunkShips}`);
         console.log(`Is the Game Over?: ${gameOver}`);
@@ -249,7 +247,7 @@ function checkP2SunkShips(event) { //function that checks if a ships sink condit
     const hitShipArr = playerTwoHits.filter((ship) => ship === hitShip); // check to see if the hit ship meets the sink ship requirement. 
     if (hitShipArr.length === sinkConditions[hitShip]) {
         playerTwoSunkShips.push(hitShip); // if the ship is sunk, add to P1 sunk ships array
-        gameInfoDisplayEl.textContent = `Player 2 Hit and Sunk Player 1's ${hitShip[0].toUpperCase() + hitShip.substring(1)}!`;
+        gameInfoDisplayEl.textContent = `Player 2 hit and SUNK Player 1's ${hitShip[0].toUpperCase() + hitShip.substring(1)}!`;
         checkGameStatus(); // check to see if the most recent sink ends the game.
         console.log(`Player 2 Sunk Ships: ${playerTwoSunkShips}`);
         console.log(`Is the Game Over?: ${gameOver}`);
@@ -259,18 +257,15 @@ function checkP2SunkShips(event) { //function that checks if a ships sink condit
 function checkGameStatus() { // function nested in each players SunkShips function that checks if win condition is met.
     if (playerOneSunkShips.length === 5 || playerTwoSunkShips.length === 5) {
         gameOver = true;
-        turnDisplayEl.textContent = `${playerTurn} has sunk all enemy ships and won the game!`
-        return
+        turnDisplayEl.textContent = `${playerTurn} has sunk all enemy ships and won the game!`;
+        return;
     };
 };
 
 function updateTurnMessage() { // function to update turn display based on game state.
     if (gameOver === false) {
         return turnDisplayEl.textContent = `It is ${playerTurn}'s turn.`;
-    }
-    // } else {
-    //     return turnDisplayEl.textContent = `${playerTurn} has sunk all enemy ships and won the game!`;
-    // };
+    };
 };
 
 function updateStartMessage() { // Function that updates the game info display to signify the game has started. 
@@ -292,6 +287,7 @@ function disableOppositePlayerBoard() { // function placed each players handleTu
 };
 
 function updateBoard() {// function to update the boards based on game state
+
 };
 
 function placeShips() {
@@ -306,7 +302,7 @@ function resetGame(event) { // Function that resets the game when the "Restart B
     Array.from(document.querySelectorAll('.board-square')).forEach(
         (el) => el.classList.remove('empty')
     );
-    playerTurn = 'Player 1';
+    playerTurn = 'Player One';
     gameOver = false;
     playerOneHits = [];
     playerTwoHits = [];
@@ -314,6 +310,7 @@ function resetGame(event) { // Function that resets the game when the "Restart B
     playerTwoSunkShips = [];
     gameInfoDisplayEl.textContent = 'The game has been restarted!'
     updateTurnMessage();
+    disableOppositePlayerBoard();
 };
 
 /*----------------------------- Event Listeners -----------------------------*/
@@ -321,6 +318,6 @@ function resetGame(event) { // Function that resets the game when the "Restart B
 startButtonEl.addEventListener('click', startGame);
 // event listener for start game button
 resetButtonEl.addEventListener('click', resetGame);
-// even listener needed for reset button
+// event listener needed for reset button
 
 
