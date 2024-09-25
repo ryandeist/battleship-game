@@ -64,32 +64,34 @@ const sinkConditions = { // This object hold the sink conditions for the various
     submarine: 3,
     carrier: 5,
     battleship: 4,
-    crusier: 3,
+    cruiser: 3,
     dingy: 2,
 };
+
 /*---------------------------- Variables (state) ----------------------------*/
 
-let activeGame = false;
+let activeGame = false; // variable keeps track of if game is started. If 'true' start button is disabled. 
 
 let playerTurn; // this variable keeps track of player turn
 
-let gameOver = false; // this variable keeps track of if win condition is met
+let gameOver = false; // this variable keeps track of if win condition is met. If 'true' game is over. 
 
-let playerOneHits = []; // this variable will hold the player hits based on game status
-let playerTwoHits = []; // this variable will old the computer hits based on game status
+let playerOneHits = []; // this variable will hold the P1 hits based on game status
+let playerTwoHits = []; // this variable will hold the P2 hits based on game status
 
-let playerOneSunkShips = []; // this variable will contain all ships the player has sunk. 
-let playerTwoSunkShips = []; // this variable will contain all ships the computer has sunk. 
+let playerOneSunkShips = []; // this variable will contain all ships the P1 has sunk. 
+let playerTwoSunkShips = []; // this variable will contain all ships the P2 has sunk. 
 // if either playerOneSunkShips or playerTwoSunkShips reaches the length of the total amount of ships, the game is over.
-let playerOneBoard = [];
-let playerTwoBoard = [];
+
+let playerOneBoard = []; // represent P1 board state before initialization
+let playerTwoBoard = []; // represent P2 board state before initialization
 
 /*------------------------ Cached Element References ------------------------*/
 
 const turnDisplayEl = document.querySelector('#turn-display');
-// console.dir(turnDisplayEl); checks to make sure turnDisplayEl is active.
+
 const gameInfoDisplayEl = document.querySelector('#game-info-display');
-// console.dir(gameInfoDisplayEl);
+
 const playerOneBoardEl = document.querySelector('#player-one-board');
 
 const playerTwoBoardEl = document.querySelector('#player-two-board');
@@ -99,10 +101,6 @@ const startButtonEl = document.querySelector('#start-button');
 const resetButtonEl = document.querySelector('#reset-button');
 
 /*-------------------------------- Functions --------------------------------*/
-
-function init() {
-
-};
 
 function startGame() { // when start button is clicked, places 5 ships randomly on both boards
     console.log('Start Game is initiated');
@@ -114,107 +112,144 @@ function startGame() { // when start button is clicked, places 5 ships randomly 
     disableStartButton();
 };
 
-function createBoardOne() { // function to place in start game to create the board grid. 
-    playerOneBoard = [ //array representing the player one board; 
+function createBoardOne() { // function to place in start game to create game board for P1;
+    playerOneBoard = [ //array representing ship placement on P1s board; 
         '', '', 'carrier', 'carrier', 'carrier', 'carrier', 'carrier', '', '', '',
         '', '', '', '', '', '', '', '', '', '',
         '', '', '', '', '', '', '', '', '', '',
+        'submarine', '', '', '', '', '', '', '', '', '',
+        'submarine', '', 'dingy', '', '', '', '', '', '', '',
+        'submarine', '', 'dingy', '', '', '', '', '', '', '',
         '', '', '', '', '', '', '', '', '', '',
+        '', '', '', 'battleship', 'battleship', 'battleship', 'battleship', '', '', '',
         '', '', '', '', '', '', '', '', '', '',
-        '', '', '', '', '', '', '', '', '', '',
-        '', '', '', '', '', '', '', '', '', '',
-        '', '', '', '', '', '', '', '', '', '',
-        '', '', '', '', '', '', '', '', '', '',
-        '', '', '', '', '', '', '', '', '', ''
+        '', '', '', '', '', 'cruiser', 'cruiser', 'cruiser', '', ''
     ];
 
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 100; i++) { // Loop creating 10x10 grid for P1
         const boardSquare = document.createElement('div');
         boardSquare.classList.add('board-square');
         boardSquare.id = i;
         playerOneBoardEl.append(boardSquare);
-    }
+    };
 
-    playerOneBoard.forEach((square, index) => {
-        let currentSquare
+    playerOneBoard.forEach((square, index) => { // temp styling of ships
+        let currentSquare;
         if (playerOneBoard[index] !== '') {
             currentSquare = document.getElementById('player-one-board').getElementsByClassName('board-square')[index];
             currentSquare.style.backgroundColor = 'blue';
-        }
-    })
-}
+        };
+    });
+};
 
-function createBoardTwo() { // function to place in start game to create the board grid. 
-    playerTwoBoard = [ //array representing the player one board; 
+function createBoardTwo() { // function to place in start game to create game board for P2
+    playerTwoBoard = [ //array representing ship placement on P2s board; 
         '', '', 'carrier', 'carrier', 'carrier', 'carrier', 'carrier', '', '', '',
         '', '', '', '', '', '', '', '', '', '',
         '', '', '', '', '', '', '', '', '', '',
+        'submarine', '', '', '', '', '', '', '', '', '',
+        'submarine', '', 'dingy', '', '', '', '', '', '', '',
+        'submarine', '', 'dingy', '', '', '', '', '', '', '',
         '', '', '', '', '', '', '', '', '', '',
+        '', '', '', 'battleship', 'battleship', 'battleship', 'battleship', '', '', '',
         '', '', '', '', '', '', '', '', '', '',
-        '', '', '', '', '', '', '', '', '', '',
-        '', '', '', '', '', '', '', '', '', '',
-        '', '', '', '', '', '', '', '', '', '',
-        '', '', '', '', '', '', '', '', '', '',
-        '', '', '', '', '', '', '', '', '', ''
+        '', '', '', '', '', 'cruiser', 'cruiser', 'cruiser', '', ''
     ];
 
-    for (let i = 0; i < 100; i++) {
+
+    for (let i = 0; i < 100; i++) { // Loop creating 10x10 grid for P2;
         const boardSquare = document.createElement('div');
         boardSquare.classList.add('board-square');
         boardSquare.id = i;
         playerTwoBoardEl.append(boardSquare);
-    }
+    };
 
-    playerOneBoard.forEach((square, index) => {
-        let currentSquare
-        if (playerOneBoard[index] !== '') {
+    playerTwoBoard.forEach((square, index) => { // temp styling of ships
+        let currentSquare;
+        if (playerTwoBoard[index] !== '') {
             currentSquare = document.getElementById('player-two-board').getElementsByClassName('board-square')[index];
             currentSquare.style.backgroundColor = 'blue';
-        }
-    })
-}
+        };
+    });
+};
 
-function disableStartButton() {
+function disableStartButton() { // function to disable start button. Should run when there is an active game. 
     if (activeGame === true) {
         startButtonEl.disabled = true;
     };
 };
 
-function placeShips() {
-    //function to place in start ships that places ships on the board
-};
 
-function handlePlayerTwoTurn(event) {     // function that handles a click on the games board
+
+function handlePlayerOneTurn(event) {     // function that handles a click for Player 1; 
     const clickedElementId = event.target.id;     // checks id of clicked element and assigns it to clickedElementId (which is a number);
     if (event.target.classList.contains('hit') || event.target.classList.contains('empty')) {
-        return;
-    } else if (playerOneBoard[clickedElementId] !== '') {
-        playerTwoHits.push(playerOneBoard[clickedElementId]);
-        console.log(playerTwoHits);
-    }
-    // check playerOneBoardArray at the index === clickedElementId
-    // if playerOneBoard[clickedElementID] has a class of .hit || .empty, return.
-    // else if playerOneBoard[clickedElementID] !== empty string, then
-    // add the returned string to playerOneHits array.  
-    // check the number of times playerOneBoard[clickledElementID] occurs in playerOneHits array (with .reduce()).
-
-    // if boats[playerOneBoard[clickedElementID]] === result of tally from playerOneHits.reduce, then: 
-    // sinkShip(); in sinkShip() checkGameStatus();
-
-
-    // if playOneBoardArray[clickedElementID] is true, give the clicked element a class of '.hit', which would syle the clicked element red. 
-    // else give the clicked element a class of .empty, which would style it white. 
-
+        return; // if playerTwoBoard[clickedElementID] has a class of .hit || .empty, do nothing.
+    } else if (playerTwoBoard[clickedElementId] !== '') { // check playerOneBoardArray at the index === clickedElementId
+        playerOneHits.push(playerTwoBoard[clickedElementId]);  // if playerTwoBoard[clickedElementID] !== empty string, then push the contained string to playerOneHits;
+        event.target.classList.add('hit');  // add the .hit class to the selected element for styling. 
+        console.log(`Player One Hits: ${playerOneHits}`)
+        checkP1SunkShips(event); // check to see if ship sinks and game ends;
+    } else {
+        event.target.classList.add('empty'); // if the space contains an empty string and has no been clicked before, apply .empty class for styling. 
+    };
     // if win condition is met, end game.
     // if !gameOver and hit; switch turn
     // else mark empty and switch turn
     // update display
 };
 
-function checkGameStatus() {
-    // function to be placed in handleClick that checks if win condition is met.
+function handlePlayerTwoTurn(event) {     // function that handles a click for Player 2;
+    const clickedElementId = event.target.id;     // checks id of clicked element and assigns it to clickedElementId (which is a number);
+    if (event.target.classList.contains('hit') || event.target.classList.contains('empty')) {
+        return; // if playerOneBoard[clickedElementID] has a class of .hit || .empty, do nothing.
+    } else if (playerOneBoard[clickedElementId] !== '') { // check playerOneBoardArray at the index === clickedElementId
+        playerTwoHits.push(playerOneBoard[clickedElementId]);  // if playerOneBoard[clickedElementID] !== empty string, then push the contained string to playerTwoHits;
+        event.target.classList.add('hit');     // add the .hit class to the selected element for styling.
+        console.log(`Player Two Hits: ${playerTwoHits}`);
+        checkP2SunkShips(event); // check to see if ship sinks and game ends.
+    } else {
+        event.target.classList.add('empty');  // if the space contains an empty string and has no been clicked before, apply .empty class for styling. 
+    };
+    // if win condition is met, end game.
+    // if !gameOver and hit; switch turn
+    // else mark empty and switch turn
+    // update display
 };
 
+function checkP1SunkShips(event) { //function that checks if a ships sink condition is met after a hit for P1
+    const clickedElementId = event.target.id;
+    const hitShip = playerTwoBoard[clickedElementId]; // assign the hit ship to a variable. 
+    const hitShipArr = playerOneHits.filter((ship) => ship === hitShip); // check to see if the hit ship meets the sink ship reuirement. 
+    if (hitShipArr.length === sinkConditions[hitShip]) {
+        playerOneSunkShips.push(hitShip); // if the ship is sunk, add to P1 sunk ships array
+        checkGameStatus(); // check to see if the most recent sink ends the game.
+        console.log(`Player One Sunk Ships: ${playerOneSunkShips}`);
+        console.log(`Is the Game Over?: ${gameOver}`);
+    };
+};
+
+function checkP2SunkShips(event) { //function that checks if a ships sink condition is met after a hit for P2
+    const clickedElementId = event.target.id;
+    const hitShip = playerOneBoard[clickedElementId]; // assign the hit ship to a variable. 
+    const hitShipArr = playerTwoHits.filter((ship) => ship === hitShip); // check to see if the hit ship meets the sink ship reuirement. 
+    if (hitShipArr.length === sinkConditions[hitShip]) {
+        playerTwoSunkShips.push(hitShip); // if the ship is sunk, add to P1 sunk ships array
+        checkGameStatus(); // check to see if the most recent sink ends the game.
+        console.log(`Player 2 Sunk Ships: ${playerTwoSunkShips}`);
+        console.log(`Is the Game Over?: ${gameOver}`);
+    };
+};
+
+function checkGameStatus() { // function to be placed in handleClick that checks if win condition is met.
+    if (playerOneSunkShips.length === 5 || playerTwoSunkShips.length === 5) {
+        return gameOver = true;
+    };
+};
+
+function placeShips() {
+    //function to place in start ships that places ships on the board
+};
 function render() {
     // function to update display based on game state
 };
@@ -231,13 +266,11 @@ function resetGame() {
     console.log('The game has been reset');
     // function to reset the game when reset button is pressed.
 };
-
-init();
 /*----------------------------- Event Listeners -----------------------------*/
 
 playerOneBoardEl.addEventListener('mousedown', handlePlayerTwoTurn);
 
-// playerTwoBoardEl.addEventListener('mousedown', handlePlayerOneTurn);
+playerTwoBoardEl.addEventListener('mousedown', handlePlayerOneTurn);
 // event listener needed for each board and its elements.
 startButtonEl.addEventListener('click', startGame);
 // event listener for start game button
