@@ -7,15 +7,55 @@
     <title>Battleship</title>
     <script defer src="js/data.js"></script>
     <script defer src="js/app.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+        </style>
     <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
-    <h1 class="title">Battleship</h1>
-    <h2 id="instructions">Instructions:</h2>
-    <p>
+    <main>
+    <h1 class="title alfa-slab-one-regular">B A T T L E S H I P</h1>
+
+    <div id="game-state-display">
+        <h2 class="subtitle alfa-slab-one-regular">Current Turn</h2>
+        <p id="turn-display">Waiting for game to start...</p>
+        <h2 class="subtitle alfa-slab-one-regular">Game Info</h2>
+        <p id="game-info-display">Click "Start" to begin. </p>
+    </div>
+    <div id="all-game-boards">
+        <div class="alfa-slab-one-regular" id="p1-ship-graveyard">
+            <div>P1 Graveyard</div>
+            <div id="p1-dingy" class="graveyard-ship dingy unsunk-ship" alt="Players One's Graveyard Dingy"></div>
+            <div id="p1-cruiser" class="graveyard-ship cruiser unsunk-ship" alt="Players One's Graveyard Cruiser"></div>
+            <div id="p1-submarine" class="graveyard-ship submarine unsunk-ship" alt="Players One's Graveyard Submarine"></div>
+            <div id="p1-battleship" class="graveyard-ship battleship unsunk-ship" alt="Players One's Graveyard Battleship"></div>
+            <div id="p1-carrier" class="graveyard-ship carrier unsunk-ship" alt="Players One's Graveyard Carrier"></div>
+        </div>
+        <div id="entire-p1-board">
+            <div class="board-label alfa-slab-one-regular">Player One</div>
+            <div id="player-one-board"></div>
+        </div>
+        <div id="entire-p2-board">
+            <div class="board-label alfa-slab-one-regular">Player Two</div>
+            <div id="player-two-board"></div>
+        </div>
+        <div class="alfa-slab-one-regular" id="p2-ship-graveyard">
+            <div>P2 Graveyard</div>
+            <div id="p2-dingy" class="graveyard-ship dingy unsunk-ship" alt="Players Two's Graveyard Dingy"></div>
+            <div id="p2-cruiser" class="graveyard-ship cruiser unsunk-ship" alt="Players Two's Graveyard Cruiser"></div>
+            <div id="p2-submarine" class="graveyard-ship submarine unsunk-ship" alt="Players Two's Graveyard Submarine"></div>
+            <div id="p2-battleship" class="graveyard-ship battleship unsunk-ship" alt="Players Two's Graveyard Battleship"></div>
+            <div id="p2-carrier" class="graveyard-ship carrier unsunk-ship" alt="Players Two's Graveyard Carrier"></div>
+        </div>
+    </div>
+    <div id="buttons">
+        <button id="start-button" class="alfa-slab-one-regular">Start</button>
+        <button id="reset-button" class="alfa-slab-one-regular">Restart</button>
+    </div>
+    <h2 id="instructions-title" class="alfa-slab-one-regular subtitle">Instructions</h2>
     <ol id="instruction-list">
-        <li>This is a two player game. Each player is represented by a game board below.</li>
+        <li>This is a two player game. Each player is represented by a game board above.</li>
         <li>Each board has 5 hidden ships stationed either horizontally or vertically on 10x10 grid.</li>
         <li>The ships include:
             <ul>
@@ -28,33 +68,12 @@
         </li>
         <li>On their turn, the player will attempt to 'hit' their opponents ship by clicking on a square in their
             oppenents board.</li>
-        <li>A successful 'hit' will be signified by the targeted square turning red and a message in the Game Info
-            display. </li>
-        <li>A miss will be signified by the targeted square turning white and a message in the Game Info Display.</li>
-        <li>To 'sink' a ship, the player must 'hit' all blocks that ship occupys.</li>
+        <li>A successful 'hit' will be signified by an explosion in the targetted square. </li>
+        <li>A miss will be signified by a white X in the targetted square.</li>
+        <li>To 'sink' a ship, the player must 'hit' all squares that ship occupys.</li>
         <li>The first player to 'sink' all of their oppenents ships wins!</li>
     </ol>
-    </p>
-    <div id="display">
-        <h2 class="title">Current Turn:</h2>
-        <p id="turn-display">Waiting for game to start...</p>
-        <h2 class="title">Game Info:</h2>
-        <p id="game-info-display">Click "Start" to begin. </p>
-    </div>
-    <div id="all-game-boards">
-        <div id="entire-p1-board">
-            <div class="label">Player One</div>
-            <div id="player-one-board"></div>
-        </div>
-        <div id="entire-p2-board">
-            <div class="label">Player Two</div>
-            <div id="player-two-board"></div>
-        </div>
-    </div>
-    <div id="buttons">
-        <button id="start-button">Start</button>
-        <button id="reset-button">Restart</button>
-    </div>
+</main>
 </body>
 
 </html>

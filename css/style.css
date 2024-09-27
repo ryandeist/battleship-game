@@ -1,29 +1,48 @@
-body {
-    background-color: lightblue;
-    width: 900px;
-    border: solid black 5px;
+@font-face {
+    font-family: 'GalleyFont';
+    src: url(/assets/fonts/Galley.ttf);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+ol {
+    margin: 0px;
+    padding: 0px;
+    letter-spacing: 0.5px;
 }
 
 #game-info-display,
 #instructions,
-#turn-display,
-.title {
+#turn-display {
+    
     margin: 0px;
     height: 40px;
-    width: px;
     padding: 0px;
-    background-color: royalblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+}
+
+.subtitle {
+    letter-spacing: 2px;
+    margin: 0px;
+    height: 40px;
+    padding: 0px;
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
 
 #instruction-list {
+    padding: 0px;
+    margin: 0px;
     display: flex;
     flex-direction: column;
     align-items: left;
-    justify-content: space-around;
 }
 #all-game-boards {
     display: flex;
@@ -40,7 +59,8 @@ body {
     background-color: lightcyan;
     display: flex; 
     flex-wrap: wrap;
-    outline: solid royalblue 12px;
+    outline: solid black 12px;
+    border-radius: 5px;
 }
 
 #entire-p1-board,
@@ -50,18 +70,21 @@ body {
     align-items: center;
 }
 
-.label {
-    border-radius: 15px;
-    background-color: royalblue;
+.board-label {
+    color: antiquewhite;
+    letter-spacing: 1px;
+    border-radius: 15px 15px 0px 0px;
+    background-color: black;
+    outline: solid black;
     padding: 10px 20px;
     font-weight: 600;
 }
 .hit {
-    background-color: red !important;
+    content: url(/assets/NicePng_dripping-blood-png_56773.png);
 }
 
 .empty {
-    background-color: white !important; 
+    content: url(/assets/NicePng_x-png_1281855.png);
 } 
 
 #buttons {
@@ -71,13 +94,118 @@ body {
 
 #start-button,
 #reset-button {
+    height: 50px;
+    width: 100px;
+    font-size: large;
+    letter-spacing: 1px;
     margin: 0px 25px 25px 25px;
+    color: antiquewhite;
+    background-color: black;
+    border-radius: 5px;
 }
 
 .board-square {
    width: 40px;
    height: 40px;
-   border: solid 1px; 
+   border: solid 1px black; 
    box-sizing: border-box;
 }
 
+.alfa-slab-one-regular {
+    font-family: "Alfa Slab One", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  body {
+    font-family: 'GalleyFont', serif;
+    background-color: lightblue;
+    
+}
+
+#p1-ship-graveyard {
+    letter-spacing: 1px;
+    margin: 0px 20px;
+    padding: 42px 0px 0px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: end;
+}
+
+#p2-ship-graveyard {
+    letter-spacing: 1px;
+    margin: 0px 20px;
+    padding: 42px 0px 0px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.title {
+    color:antiquewhite;
+    margin: 0px 0px 10px 0px;
+    height: 150px;
+    width: 500px;
+    padding: 0px 0px 0px 0px;
+    display: flex;
+    align-items:last baseline;
+    justify-content:center;
+    background-image: url(/assets/NicePng_aircraft-carrier-png_2203212.png);
+    background-size: 500px 141.25px;
+    background-repeat: no-repeat;
+    background-position: bottom;
+}
+
+#p1-carrier {
+    width: 127px;
+    content: url(/assets/NicePng_aircraft-carrier-png_2203212.png);
+}
+
+#p1-battleship {
+    width: 101px;
+    content: url(/assets/battleship.png);
+}
+
+#p1-submarine {
+    width: 76px;
+    content: url(/assets/submarine.png);
+}
+
+#p1-cruiser {
+    width: 76px;
+    content: url(/assets/cruiser.png);
+}
+
+#p1-dingy {
+    width: 50px;
+    content: url(/assets/dingy.png);
+}
+#p2-carrier {
+    width: 127px;
+    content: url(/assets/NicePng_aircraft-carrier-png_2203212.png);
+}
+
+#p2-battleship {
+    width: 101px;
+    content: url(/assets/battleship.png);
+}
+
+#p2-submarine {
+    width: 76px;
+    content: url(/assets/submarine.png);
+}
+
+#p2-cruiser {
+    width: 76px;
+    content: url(/assets/cruiser.png);
+}
+
+#p2-dingy {
+    width: 50px;
+    content: url(/assets/dingy.png);
+}
+
+.unsunk-ship {
+    opacity: 0.1;
+}
