@@ -1,3 +1,5 @@
+// Data Document Containing all possible startig points for ships. 
+
 const horizontalShipPlacements = {
     carrier: [0, 1, 2, 3, 4, 5,
         10, 11, 12, 13, 14, 15,
