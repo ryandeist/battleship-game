@@ -1,5 +1,3 @@
-
-
 Assets Attribution: 
 Title Background: https://www.nicepng.com/downpng/u2w7e6u2t4a9e6q8_picture-library-battleship-clipart-aircraft-carrier-aircraft-carrier/
 Galley Font: https://www.freefonts.io/download/galley/
