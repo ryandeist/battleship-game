@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'GalleyFont';
-    src: url(/assets/fonts/Galley.ttf);
+    src: url(/battleship-game/assets/fonts/Galley.ttf);
 }
 
 main {
@@ -55,7 +55,7 @@ ol {
     height: 400px;
     width: 400px;
     margin: 15px 25px 15px 25px;
-    background-image: url(/assets/nature-sea-surface-aerial-viewbird-eye-view-photo-turquoise-waves-water-surface-textureblue-sea-background-beautiful-nature-amazing-view-sea-background_34362-4563.avif);
+    background-image: url(/battleship-game/assets/nature-sea-surface-aerial-viewbird-eye-view-photo-turquoise-waves-water-surface-textureblue-sea-background-beautiful-nature-amazing-view-sea-background_34362-4563.avif);
     background-color: lightcyan;
     display: flex; 
     flex-wrap: wrap;
@@ -80,11 +80,11 @@ ol {
     font-weight: 600;
 }
 .hit {
-    content: url(/assets/NicePng_dripping-blood-png_56773.png);
+    content: url(/battleship-game/assets/NicePng_dripping-blood-png_56773.png);
 }
 
 .empty {
-    content: url(/assets/NicePng_x-png_1281855.png);
+    content: url(/battleship-game/assets/NicePng_x-png_1281855.png);
 } 
 
 #buttons {
@@ -151,7 +151,7 @@ ol {
     display: flex;
     align-items:last baseline;
     justify-content:center;
-    background-image: url(/assets/NicePng_aircraft-carrier-png_2203212.png);
+    background-image: url(/battleship-game/assets/NicePng_aircraft-carrier-png_2203212.png);
     background-size: 500px 141.25px;
     background-repeat: no-repeat;
     background-position: bottom;
@@ -159,51 +159,51 @@ ol {
 
 #p1-carrier {
     width: 127px;
-    content: url(/assets/NicePng_aircraft-carrier-png_2203212.png);
+    content: url(/battleship-game/assets/NicePng_aircraft-carrier-png_2203212.png);
 }
 
 #p1-battleship {
     width: 101px;
-    content: url(/assets/battleship.png);
+    content: url(/battleship-game/assets/battleship.png);
 }
 
 #p1-submarine {
     width: 76px;
-    content: url(/assets/submarine.png);
+    content: url(/battleship-game/assets/submarine.png);
 }
 
 #p1-cruiser {
     width: 76px;
-    content: url(/assets/cruiser.png);
+    content: url(/battleship-game/assets/cruiser.png);
 }
 
 #p1-dingy {
     width: 50px;
-    content: url(/assets/dingy.png);
+    content: url(/battleship-game/assets/dingy.png);
 }
 #p2-carrier {
     width: 127px;
-    content: url(/assets/NicePng_aircraft-carrier-png_2203212.png);
+    content: url(/battleship-game/assets/NicePng_aircraft-carrier-png_2203212.png);
 }
 
 #p2-battleship {
     width: 101px;
-    content: url(/assets/battleship.png);
+    content: url(/battleship-game/assets/battleship.png);
 }
 
 #p2-submarine {
     width: 76px;
-    content: url(/assets/submarine.png);
+    content: url(/battleship-game/assets/submarine.png);
 }
 
 #p2-cruiser {
     width: 76px;
-    content: url(/assets/cruiser.png);
+    content: url(/battleship-game/assets/cruiser.png);
 }
 
 #p2-dingy {
     width: 50px;
-    content: url(/assets/dingy.png);
+    content: url(/battleship-game/assets/dingy.png);
 }
 
 .unsunk-ship {
