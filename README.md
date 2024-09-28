@@ -7,11 +7,11 @@ The is an adaptation of the classic board game, Battleship. I chose this game no
 Overview:
 - This is a two player game.
 - Each player is represented by a 10x10 board.
-- Each board has five hidden ships of varying length placed on their board.
-- Ships can be placed horizonally or vertically.
+- Each board has five hidden ships of varying length placed randomly on their board.
+- Ships can be placed horizonally or vertically. Boats cannot overlap.
 - To play, the players take turns attempting to 'hit' and enemy ship by selecting a square on their oppenents board.
 - A ship will sink if all of the board squares it occupies are hit.
-- The person player to sink all their opponents ships wins the game!
+- The first player to sink all their opponents ships wins the game!
 
 Deployed App: https://ryandeist.github.io/battleship-game/
 
