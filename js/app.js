@@ -286,7 +286,7 @@ function handlePlayerOneTurn(event) {     // function that handles a click for P
         console.log(`Player One Hits: ${playerOneHits}`) //console.log kept in for presentation.
         gameInfoDisplayEl.textContent = `Player 1 hit one of Player 2's ships!`;
         checkP1SunkShips(event); // check to see if ship sinks and game ends;
-        playerTurn = 'Player Two';
+        return;
     } else {
         event.target.classList.add('empty'); // if the space contains an empty string and has not been clicked before, apply .empty class for styling. 
         playerTurn = 'Player Two';
@@ -331,7 +331,7 @@ function handlePlayerTwoTurn(event) {     // function that handles a click for P
         console.log(`Player Two Hits: ${playerTwoHits}`); //console.log kept in for presentation.
         gameInfoDisplayEl.textContent = `Player 2 hit one of Player 1's ships!`;
         checkP2SunkShips(event); // check to see if ship sinks and game ends.
-        playerTurn = 'Player One';
+        return;
     } else {
         event.target.classList.add('empty');  // if the space contains an empty string and has not been clicked before, apply .empty class for styling. 
         playerTurn = 'Player One';
