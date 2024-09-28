@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'GalleyFont';
-    src: url(/assets/fonts/Galley.ttf);
+    src: url(./assets/fonts/Galley.ttf);
 }
 
 main {
