@@ -40,7 +40,6 @@ const graveyardShipEls = document.querySelectorAll('.graveyard-ship');
 /*-------------------------------- Setup Functions --------------------------------*/
 
 function startGame() { // when start button is clicked, places 5 ships randomly on both boards and begins the games
-    console.log('Start Game is initiated');
     activeGame = true;
     playerTurn = "Player One";
     gameOver = false;
@@ -50,8 +49,6 @@ function startGame() { // when start button is clicked, places 5 ships randomly 
     updateStartMessage();
     disableOppositePlayerBoard();
     disableStartButton();
-    console.log(playerOneBoard); //console.log kept in for presentation.
-    console.log(playerTwoBoard); //console.log kept in for presentation.
 };
 
 function createBoardOne() { //function that creates P1's board.
@@ -283,7 +280,6 @@ function handlePlayerOneTurn(event) {     // function that handles a click for P
     } else if (hitSquare !== '') { // check playerOneBoardArray at the index === clickedElementId
         playerOneHits.push(hitSquare);
         event.target.classList.add('hit');  // add the .hit class to the selected element for styling. 
-        console.log(`Player One Hits: ${playerOneHits}`) //console.log kept in for presentation.
         gameInfoDisplayEl.textContent = `Player 1 hit one of Player 2's ships!`;
         checkP1SunkShips(event); // check to see if ship sinks and game ends;
         return;
@@ -305,8 +301,6 @@ function checkP1SunkShips(event) { //function that checks if a ships sink condit
         gameInfoDisplayEl.textContent = `Player 1 hit and SUNK Player 2's ${hitShip[0].toUpperCase() + hitShip.substring(1)}!`;
         updateP2Graveyard(hitShip);
         checkGameStatus(); // check to see if the most recent sink ends the game.
-        console.log(`Player One Sunk Ships: ${playerOneSunkShips}`); //console.log kept in for presentation.
-        console.log(`Is the Game Over?: ${gameOver}`); //console.log kept in for presentation.
     };
 };
 
@@ -328,7 +322,6 @@ function handlePlayerTwoTurn(event) {     // function that handles a click for P
     } else if (hitSquare !== '') { // check playerOneBoardArray at the index === clickedElementId
         playerTwoHits.push(hitSquare);
         event.target.classList.add('hit');     // add the .hit class to the selected element for styling.
-        console.log(`Player Two Hits: ${playerTwoHits}`); //console.log kept in for presentation.
         gameInfoDisplayEl.textContent = `Player 2 hit one of Player 1's ships!`;
         checkP2SunkShips(event); // check to see if ship sinks and game ends.
         return;
@@ -350,8 +343,6 @@ function checkP2SunkShips(event) { //function that checks if a ships sink condit
         gameInfoDisplayEl.textContent = `Player 2 hit and SUNK Player 1's ${hitShip[0].toUpperCase() + hitShip.substring(1)}!`;
         updateP1Graveyard(hitShip);
         checkGameStatus(); // check to see if the most recent sink ends the game.
-        console.log(`Player 2 Sunk Ships: ${playerTwoSunkShips}`); //console.log kept in for presentation.
-        console.log(`Is the Game Over?: ${gameOver}`); //console.log kept in for presentation.
     };
 };
 
@@ -384,8 +375,6 @@ function resetGame(event) { // Function that resets the game when the "Restart B
     resetPlayerTwoBoard();
     updateTurnMessage();
     disableOppositePlayerBoard();
-    console.log(playerOneBoard); //console.log kept in for presentation.
-    console.log(playerTwoBoard); //console.log kept in for presentation.
 };
 
 function resetPlayerOneBoard() { // function to put in reset function to reset P1s board
