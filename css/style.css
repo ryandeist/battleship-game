@@ -15,11 +15,18 @@ ol {
     letter-spacing: 0.5px;
 }
 
+#p1-ship-graveyard-mobile {
+    height: 0px;
+    width: 0px;
+    visibility: collapse;
+}
+
 #game-info-display,
 #instructions,
 #turn-display {
     
-    margin: 0px;
+    margin-left: auto;
+    margin-right: auto;
     height: 40px;
     padding: 0px;
     display: flex;
@@ -63,11 +70,15 @@ ol {
     border-radius: 5px;
 }
 
-#entire-p1-board,
-#entire-p2-board {
+#p1-display,
+#p2-display {
     display:flex;
     flex-direction: column;
     align-items: center;
+}
+
+#entire-p2-board {
+    display: flex;
 }
 
 .board-label {
@@ -208,4 +219,245 @@ ol {
 
 .unsunk-ship {
     opacity: 0.1;
+}
+
+@media only screen and (max-width: 430px) {
+    .title {
+        color:antiquewhite;
+        margin-top: -40px;
+        font-size: 28px;
+        height: 150px;
+        width: 400px;
+        padding: 0px 0px 0px 0px;
+        display: flex;
+        align-items:last baseline;
+        justify-content:center;
+        background-image: url(../assets/NicePng_aircraft-carrier-png_2203212.png);
+        background-size: 400px 113px;
+        background-repeat: no-repeat;
+        background-position: bottom;
+    }
+
+    main {
+        position: relative;
+    }
+
+    #game-state-display {
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+        align-content: flex-start;
+
+    }
+
+    #turn-display {
+        padding: 0px;
+        margin: 0px;
+    }
+
+    #game-info-display {
+        display: flex;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    #instruction-list {
+        visibility: hidden;
+        height: 0;
+    }
+
+    .subtitle {
+        height: 0px;
+        visibility: collapse;
+    }
+
+    #all-game-boards {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin: 0px 0px 0px -90px;
+        top: 200px;
+        left: 0px;
+    }
+
+    #player-one-board,
+    #player-two-board {
+        height: 280px;
+        width: 280px;
+    }
+
+    #p1-ship-graveyard {
+        visibility: hidden;
+        height: 0px;
+        padding: 0px;
+    }
+
+    .board-label {
+        font-size: 15px;
+        margin-top: 5px;
+        padding: 1px 20px;
+
+    }
+
+    #start-button,
+    #reset-button {
+        height: 30px;
+        width: 100px;
+        font-size:medium;
+        margin: 10px 25px 10px 25px;
+    }
+
+    .board-square {
+        width: 28px;
+        height: 28px;
+    }
+
+    #p1-ship-graveyard-mobile,
+    #p2-ship-graveyard {
+        display: flex;
+        flex-direction: column;
+        visibility: visible;
+        font-size: small;
+        padding: 30px 0px 0px 0px;
+        letter-spacing: 1px;
+        height: 280px;
+        width: 0;
+        justify-content: space-evenly;
+        margin: 0px;
+    }
+
+    #entire-p1-board,
+    #entire-P2-board {
+        display: flex;
+    }
+
+    #p1-carrier {
+        width: 75px;
+    }
+    
+    #p1-battleship {
+        width: 60px;
+    }
+    
+    #p1-submarine {
+        width: 45px;
+    }
+    
+    #p1-cruiser {
+        width: 45px;
+    }
+    
+    #p1-dingy {
+        width: 30px;
+    }
+    #p2-carrier {
+        width: 75px;
+    }
+    
+    #p2-battleship {
+        width: 60px;
+    }
+    
+    #p2-submarine {
+        width: 45px;
+    }
+    
+    #p2-cruiser {
+        width: 45px;
+    }
+    
+    #p2-dingy {
+        width: 30px;
+    }
+
+    li {
+        height: 0;
+    }
+}
+
+@media only screen and (max-width: 390px) {
+
+    #p1-carrier {
+        width: 75px;
+    }
+    
+    #p1-battleship {
+        width: 60px;
+    }
+    
+    #p1-submarine {
+        width: 45px;
+    }
+    
+    #p1-cruiser {
+        width: 45px;
+    }
+    
+    #p1-dingy {
+        width: 30px;
+    }
+    #p2-carrier {
+        width: 75px;
+    }
+    
+    #p2-battleship {
+        width: 60px;
+    }
+    
+    #p2-submarine {
+        width: 45px;
+    }
+    
+    #p2-cruiser {
+        width: 45px;
+    }
+    
+    #p2-dingy {
+        width: 30px;
+    }
+    
+    #p1-ship-graveyard-mobile,
+    #p2-ship-graveyard {
+        height: 250px;
+    }
+
+    .board-label {
+        font-size: 12px;
+        margin-top: 4px;
+        padding: 1px 20px;
+
+    }
+
+    #player-one-board,
+    #player-two-board {
+        height: 250px;
+        width: 250px;
+    }
+
+    .board-square {
+        width: 25px;
+        height: 25px;
+    }
+
+    .title {
+        color:antiquewhite;
+        margin-top: -40px;
+        font-size: 28px;
+        height: 150px;
+        width: 380px;
+        padding: 0px 0px 0px 0px;
+        display: flex;
+        align-items:last baseline;
+        justify-content:center;
+        background-image: url(../assets/NicePng_aircraft-carrier-png_2203212.png);
+        background-size: 380px 113px;
+        background-repeat: no-repeat;
+        background-position: bottom;
+    }
+
+    #reset-button,
+    #start-button {
+        margin: 1px 10px;
+    }
+
 }
