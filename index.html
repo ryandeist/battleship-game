@@ -10,83 +10,87 @@
     <link rel="shortcut icon" href="./assets/battleship icon.png" type="image/x-icon">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
-        </style>
+    </style>
     <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
     <main>
-    <h1 class="title alfa-slab-one-regular">B A T T L E S H I P</h1>
+        <h1 class="title alfa-slab-one-regular">B A T T L E S H I P</h1>
 
-    <div id="game-state-display">
-        <h2 class="subtitle alfa-slab-one-regular">Current Turn</h2>
-        <p id="turn-display">Waiting for game to start...</p>
-        <h2 class="subtitle alfa-slab-one-regular">Game Info</h2>
-        <p id="game-info-display">Click "Start" to begin. </p>
-    </div>
-    <div id="all-game-boards">
-        <div class="alfa-slab-one-regular" id="p1-ship-graveyard">
-            <div id="p1-graveyard">P1 Graveyard</div>
-            <div id="p1-dingy" class="graveyard-ship dingy unsunk-ship" alt="Players One's Graveyard Dingy"></div>
-            <div id="p1-cruiser" class="graveyard-ship cruiser unsunk-ship" alt="Players One's Graveyard Cruiser"></div>
-            <div id="p1-submarine" class="graveyard-ship submarine unsunk-ship" alt="Players One's Graveyard Submarine"></div>
-            <div id="p1-battleship" class="graveyard-ship battleship unsunk-ship" alt="Players One's Graveyard Battleship"></div>
-            <div id="p1-carrier" class="graveyard-ship carrier unsunk-ship" alt="Players One's Graveyard Carrier"></div>
+        <div id="game-state-display">
+            <h2 class="subtitle alfa-slab-one-regular">Current Turn</h2>
+            <p id="turn-display">Waiting for game to start...</p>
+            <h2 class="subtitle alfa-slab-one-regular">Game Info</h2>
+            <p id="game-info-display">Click "Start" to begin. </p>
         </div>
-        <div id="entire-p1-board">
-            <div id="p1-display">
-            <div class="board-label alfa-slab-one-regular">Player One</div>
-            <div id="player-one-board"></div>
+        <div id="all-game-boards">
+            <div id="entire-p1-board">
+                <div class="alfa-slab-one-regular" id="p1-ship-graveyard">
+                    <div id="p1-graveyard">P1 Graveyard</div>
+                    <div id="p1-dingy" class="graveyard-ship dingy unsunk-ship" alt="Players One's Graveyard Dingy">
+                    </div>
+                    <div id="p1-cruiser" class="graveyard-ship cruiser unsunk-ship"
+                        alt="Players One's Graveyard Cruiser"></div>
+                    <div id="p1-submarine" class="graveyard-ship submarine unsunk-ship"
+                        alt="Players One's Graveyard Submarine"></div>
+                    <div id="p1-battleship" class="graveyard-ship battleship unsunk-ship"
+                        alt="Players One's Graveyard Battleship"></div>
+                    <div id="p1-carrier" class="graveyard-ship carrier unsunk-ship"
+                        alt="Players One's Graveyard Carrier"></div>
+                </div>
+                <div id="p1-display">
+                    <div class="board-label alfa-slab-one-regular">Player One</div>
+                    <div id="player-one-board"></div>
+                </div>
             </div>
-            <div class="alfa-slab-one-regular" id="p1-ship-graveyard-mobile">
-                <div id="p1-graveyard">P1 Graveyard</div>
-                <div id="p1-dingy" class="graveyard-ship dingy unsunk-ship" alt="Players One's Graveyard Dingy"></div>
-                <div id="p1-cruiser" class="graveyard-ship cruiser unsunk-ship" alt="Players One's Graveyard Cruiser"></div>
-                <div id="p1-submarine" class="graveyard-ship submarine unsunk-ship" alt="Players One's Graveyard Submarine"></div>
-                <div id="p1-battleship" class="graveyard-ship battleship unsunk-ship" alt="Players One's Graveyard Battleship"></div>
-                <div id="p1-carrier" class="graveyard-ship carrier unsunk-ship" alt="Players One's Graveyard Carrier"></div>
+            <div id="entire-p2-board">
+                <div id="p2-display">
+                    <div class="board-label alfa-slab-one-regular">Player Two</div>
+                    <div id="player-two-board"></div>
+                </div>
+                <div class="alfa-slab-one-regular" id="p2-ship-graveyard">
+                    <div>P2 Graveyard</div>
+                    <div id="p2-dingy" class="graveyard-ship dingy unsunk-ship" alt="Players Two's Graveyard Dingy"></div>
+                    <div id="p2-cruiser" class="graveyard-ship cruiser unsunk-ship"
+                        alt="Players Two's Graveyard Cruiser"></div>
+                    <div id="p2-submarine" class="graveyard-ship submarine unsunk-ship"
+                        alt="Players Two's Graveyard Submarine"></div>
+                    <div id="p2-battleship" class="graveyard-ship battleship unsunk-ship"
+                        alt="Players Two's Graveyard Battleship"></div>
+                    <div id="p2-carrier" class="graveyard-ship carrier unsunk-ship"
+                        alt="Players Two's Graveyard Carrier"></div>
+                </div>
             </div>
-        </div>
-        <div id="entire-p2-board">
-            <div id="p2-display">
-            <div class="board-label alfa-slab-one-regular">Player Two</div>
-            <div id="player-two-board"></div>
-        </div>
-        <div class="alfa-slab-one-regular" id="p2-ship-graveyard">
-            <div>P2 Graveyard</div>
-            <div id="p2-dingy" class="graveyard-ship dingy unsunk-ship" alt="Players Two's Graveyard Dingy"></div>
-            <div id="p2-cruiser" class="graveyard-ship cruiser unsunk-ship" alt="Players Two's Graveyard Cruiser"></div>
-            <div id="p2-submarine" class="graveyard-ship submarine unsunk-ship" alt="Players Two's Graveyard Submarine"></div>
-            <div id="p2-battleship" class="graveyard-ship battleship unsunk-ship" alt="Players Two's Graveyard Battleship"></div>
-            <div id="p2-carrier" class="graveyard-ship carrier unsunk-ship" alt="Players Two's Graveyard Carrier"></div>
-        </div>
-        </div>
-    </div>
-    <div id="buttons">
-        <button id="start-button" class="alfa-slab-one-regular">Start</button>
-        <button id="reset-button" class="alfa-slab-one-regular">Restart</button>
-    </div>
-    <h2 id="instructions-title" class="alfa-slab-one-regular subtitle">Instructions</h2>
-    <ol id="instruction-list">
-        <li>This is a two player game. Each player is represented by a game board above.</li>
-        <li>Each board has 5 hidden ships randomly stationed either horizontally or vertically on 10x10 grid.</li>
-        <li>The ships include:
-            <ul>
-                <li>Carrier - 5 blocks long</li>
-                <li>Battleship - 4 blocks long</li>
-                <li>Submarine - 3 blocks long</li>
-                <li>Cruiser - 3 blocks long</li>
-                <li>Dingy - 2 blocks long</li>
-            </ul>
-        </li>
-        <li>On their turn, the player will attempt to 'hit' their opponents ship by clicking on a square in their
-            oppenents board.</li>
-        <li>A successful 'hit' will be signified by an explosion in the targeted square. The player can continue firing until they 'miss.' </li>
-        <li>A miss will be signified by a white X in the targeted square and ends the players turn.</li>
-        <li>To 'sink' a ship, the player must 'hit' all squares that ship occupys.</li>
-        <li>The first player to 'sink' all of their oppenents ships wins!</li>
-    </ol>
-</main>
+            </div>
+            <div id="buttons">
+                <button id="start-button" class="alfa-slab-one-regular">Start</button>
+                <button id="reset-button" class="alfa-slab-one-regular">Restart</button>
+            </div>
+            <h2 id="instructions-title" class="alfa-slab-one-regular subtitle">Instructions</h2>
+            <ol id="instruction-list">
+                <li>This is a two player game. Each player is represented by a game board above.</li>
+                <li>Each board has 5 hidden ships randomly stationed either horizontally or vertically on 10x10 grid.
+                </li>
+                <li>The ships include:
+                    <ul>
+                        <li>Carrier - 5 blocks long</li>
+                        <li>Battleship - 4 blocks long</li>
+                        <li>Submarine - 3 blocks long</li>
+                        <li>Cruiser - 3 blocks long</li>
+                        <li>Dingy - 2 blocks long</li>
+                    </ul>
+                </li>
+                <li>On their turn, the player will attempt to 'hit' their opponents ship by clicking on a square in
+                    their
+                    oppenents board.</li>
+                <li>A successful 'hit' will be signified by an explosion in the targeted square. The player can continue
+                    firing until they 'miss.' </li>
+                <li>A miss will be signified by a white X in the targeted square and ends the players turn.</li>
+                <li>To 'sink' a ship, the player must 'hit' all squares that ship occupys.</li>
+                <li>The first player to 'sink' all of their oppenents ships wins!</li>
+            </ol>
+    </main>
 </body>
 
 </html>
